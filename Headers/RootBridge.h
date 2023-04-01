@@ -1,3 +1,11 @@
-// Umbrella header for RootBridgeFramework.
-// Add import lines for each public header, like this: #import <RootBridgeFramework/XXXAwesomeClass.h>
-// Don’t forget to also add them to RootBridgeFramework_PUBLIC_HEADERS in your Makefile!
+#ifndef rootbridge_h
+#define rootbridge_h
+
+#import <Foundation/Foundation.h>
+
+@interface RootBridge : NSObject
++ (BOOL)isJBRootless;
++ (NSString *)getJBPath:(NSString *)path;
+@end
+
+#endif
