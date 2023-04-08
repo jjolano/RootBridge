@@ -1,7 +1,7 @@
 Package: me.jjolano.fmwk.rootbridge
 Name: RootBridge Framework
 Depends: firmware (>= 8.0)
-Version: 1.0.0
+Version: 1.0.1
 Architecture: iphoneos-arm
 Description: An iOS developer framework for rootless tweak development.
 Maintainer: jjolano
