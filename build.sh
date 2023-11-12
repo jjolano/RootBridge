@@ -15,6 +15,11 @@ make clean &&
 THEOS_PACKAGE_SCHEME=rootless ARCHS="arm64 arm64e" TARGET=iphone:clang:latest:14.0 make package FINALPACKAGE=1 &&
 cp -p "`ls -dtr1 packages/* | tail -1`" $PWD/build/
 
+# build main project (roothide ver.)
+make clean &&
+THEOS_PACKAGE_SCHEME=roothide ARCHS="arm64 arm64e" TARGET=iphone:clang:latest:14.0 make package FINALPACKAGE=1 &&
+cp -p "`ls -dtr1 packages/* | tail -1`" $PWD/build/
+
 # build main project (rooted ver.)
 make clean &&
 make package FINALPACKAGE=1 &&
