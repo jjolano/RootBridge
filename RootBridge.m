@@ -1,6 +1,14 @@
 #import <RootBridge.h>
 #import "vendor/apple/dyld_priv.h"
 
+#ifndef THEOS_PACKAGE_SCHEME_ROOTHIDE
+#import <rootless.h>
+#else
+#import <roothide.h>
+#define ROOT_PATH_NS_VAR jbroot
+#endif
+
+
 @implementation RootBridge
 + (NSString *)getCallerPath {
     const void* ret_addr = __builtin_extract_return_addr(__builtin_return_address(0));
@@ -29,10 +37,10 @@
 }
 
 + (NSString *)getJBPath:(NSString *)path {
-    if(![self isJBRootless] || !path || ![path isAbsolutePath] || [path hasPrefix:@"/var/jb"]) {
+    if(![self isJBRootless] || !path || ![path isAbsolutePath]) { // || [path hasPrefix:@"/var/jb"] this check should be done in rootless header
         return path;
     }
 
-    return [@"/var/jb" stringByAppendingPathComponent:path];
+    return ROOT_PATH_NS_VAR(path);
 }
 @end
